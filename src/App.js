@@ -1,6 +1,6 @@
 import React from 'react';
-import Auth from './components/Auth/Auth'
 import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 import routes from './routes'
 import {withRouter} from 'react-router-dom'
 import './App.scss';
@@ -12,12 +12,13 @@ class App extends React.Component {
         {this.props.location.pathname === '/'
           ?
             <>
-              <Auth />
+              {routes}
             </>
           :
             <>
               <Header />
               {routes}
+              <Footer />
             </>
         }
       </div>

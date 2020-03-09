@@ -2,6 +2,10 @@ require('dotenv').config()
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
+const authCtrl = require('./controllers/authCtrl')
+const productCtrl = require('./controllers/productCtrl')
+const cartCtrl = require('./controllers/cartCtrl')
+const historyCtrl = require('./controllers/historyCtrl')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
 const app = express()
@@ -28,12 +32,19 @@ massive({
 
 
 // AUTH ENDPOINTS
-
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)
+app.post('/auth/logout', authCtrl.logout)
+app.get('/auth/user', authCtrl.currentUser)
 
 // PRODUCT ENDPOINTS
-
+app.get('/api/products', productCtrl.getAll)
+// app.get('/api/products', productCtrl.getById)
 
 // CART ENDPOINTS
-
+app.get('/api/cart', cartCtrl.get)
+app.post('/api/cart', cartCtrl.add)
+app.put('/api/cart', cartCtrl.update)
+app.delete('/api/cart/:product_id', cartCtrl.delete)
 
 // HISTORY ENDPOINTS

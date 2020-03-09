@@ -1,0 +1,21 @@
+.header-mobile {
+  position: fixed;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #024b93;
+  height: 80px;
+}
+
+.header-title {
+  display: flex;
+}
+
+// @media (min-width: 768px) {
+//   .header-mobile {
+
+//   }
+// }

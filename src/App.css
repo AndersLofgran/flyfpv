@@ -1,14 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-a {
-  border: none;
-  outline: none;
-  color: inherit;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 input:focus {
@@ -19,7 +13,6 @@ input:focus {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -28,3 +21,4 @@ input:focus {
 .App {
   text-align: center;
 }
+/*# sourceMappingURL=App.css.map */
