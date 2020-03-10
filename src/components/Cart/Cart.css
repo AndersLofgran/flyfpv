@@ -1,5 +1,5 @@
 .cart {
-  height: 75vh;
+  min-height: 75vh;
 }
 
 .cart-item {

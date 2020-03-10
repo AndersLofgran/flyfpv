@@ -9,13 +9,17 @@ const Landing = props => {
 
   useEffect(() => {
     axios.get('/api/products').then(products => {
-      if(props.category !== '') {
+      if(props.input) {
+        setProducts(products.data.filter(product => product.name.toLowerCase().includes(props.input.toLowerCase())))
+      }
+      else if(props.category !== 'All Products') {
         setProducts(products.data.filter(product => product.category === props.category))
-      } else {
+      }
+      else {
         setProducts(products.data)
       }
     })
-  }, [props.category])
+  }, [props.input, props.category])
 
   const addToCart = productID => {
     axios.post('/api/cart', {product_id: productID}).then(product => {
@@ -40,15 +44,15 @@ const Landing = props => {
   
   return (
     <div className='landing' >
-      {props.category && <h1 className='landing-category'> {props.category} </h1> }
+      <h1 className='landing-category'> {props.category} </h1>
       {productList}
     </div>
   )
 }
 
 const mapStateToProps = reduxState => {
-  const {category} = reduxState.searchReducer
-  return {category}
+  const {input, category} = reduxState.searchReducer
+  return {input, category}
 }
 
 export default connect(mapStateToProps)(withRouter(Landing))

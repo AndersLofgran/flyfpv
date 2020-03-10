@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import axios from 'axios'
 import dodoHistory from '../../assets/dodo_history.png'
 import './History.scss'
 
@@ -14,20 +15,22 @@ const History = props => {
       setHistory(history.data)
     }).catch(() => setHistory([]))
   }, [])
-
-
+  
   const historyList = history.map((item, i) => {
-    return  <div className='history-item' >
-              <div>{i + 1}</div>
-              <img src={item.img} />
-              {item.name}
-              {item.category}
-              {item.price}
-            </div>
+    return  <Link to={`/product/${item.product_id}`}>
+              <div className='history-item'>
+                <div>{i + 1}</div>
+                <img src={item.img} />
+                {item.name}
+                {item.category}
+                {item.price}
+              </div>
+            </Link>
   }).reverse()
   
+
   return (
-    <div className='history' >
+    <div className='history'>
       {history[0]
         ?
           <div> {historyList} </div>

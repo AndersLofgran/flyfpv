@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {filterCategory} from '../../redux/searchReducer'
+import {filterInput, filterCategory} from '../../redux/searchReducer'
 import {login_logout} from '../../redux/userReducer'
 import menuIcon from  '../../assets/menu_icon.png'
 import searchIcon from '../../assets/search_icon.png'
@@ -62,8 +62,8 @@ const Nav = props => {
     <div className='nav' >
       <img onClick={showMenuDropdown} src={menuIcon}/>
       <img onClick={showSearchDropdown} src={searchIcon}/>
-      <Link className='noSelect' to='/history' > <img onClick={closeDropdowns} src={historyIcon}/> </Link>
-      <Link className='noSelect' to='/cart' > <img onClick={closeDropdowns} src={cartIcon}/> </Link>
+      <Link to='/history' > <img onClick={closeDropdowns} src={historyIcon}/> </Link>
+      <Link to='/cart' > <img onClick={closeDropdowns} src={cartIcon}/> </Link>
     </div>
 
     {toggleMenu &&
@@ -76,7 +76,8 @@ const Nav = props => {
                 <Link to='/'> <h3 onClick={() => {
                   props.login_logout('', '')
                   logout()
-                  }}>Logout</h3> </Link>
+                  }}>Logout</h3>
+                </Link>
               </div>
             :
               <div className='menu-dropdown-auth'>
@@ -84,16 +85,19 @@ const Nav = props => {
                 <Link to='/'> <h3 onClick={() => {
                   props.login_logout('', '')
                   logout()
-                  }}>Logout</h3> </Link>
+                  }}>Logout</h3>
+                </Link>
               </div>
           }
         </div>
         <div className='menu-dropdown-navigation'>
           <Link to='/landing'> <h3 onClick={() => {
               setToggleMenu(false)
-              props.filterCategory('')
-            }} >All Products</h3> </Link>
-          <h3 onClick={showCategories}> Categories </h3>
+              props.filterInput('')
+              props.filterCategory('All Products')
+            }} >All Products</h3>
+          </Link>
+          <Link> <h3 className='noSelect' onClick={showCategories}> Categories </h3> </Link>
             {toggleCategories &&
                   <div className='categories' >
                     <Link to='/landing' className='category-item' onClick={ev => filterByCategory(ev.target.innerText)}>Antennas</Link>
@@ -107,7 +111,10 @@ const Nav = props => {
 
     {toggleSearch &&
       <div className='search-dropdown' >
-        <input className='search-bar' />
+        <input className='search-bar' onChange={ev => {
+          props.filterCategory(`Search Results for: '${ev.target.value}'`)
+          props.filterInput(ev.target.value)
+        }} />
         <Link to='/landing' >
           <img onClick={showSearchDropdown} src={searchIcon}/>
         </Link>
@@ -122,4 +129,4 @@ const mapStateToProps = reduxState => {
   return { email }
 }
 
-export default connect(mapStateToProps, {filterCategory, login_logout})(Nav)
+export default connect(mapStateToProps, {filterInput, filterCategory, login_logout})(Nav)

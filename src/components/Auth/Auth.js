@@ -29,10 +29,8 @@ const Auth = props => {
   return (
     <>
       <div className='auth-header' >
-        <div className='auth-header-title' >
           <h1>flyFPV</h1>
           <img />
-        </div>
       </div>
 
       <div className='auth-container' >
@@ -45,7 +43,7 @@ const Auth = props => {
             <input  type='text'
                     onChange={ev => setValue({...value, email: ev.target.value})} />
             <h3>Password</h3>
-            <input  type='text'
+            <input  type='password'
                     onChange={ev => setValue({...value, password: ev.target.value})} />
           </div>
           <button onClick={login} >Login</button>
