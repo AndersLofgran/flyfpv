@@ -8,8 +8,8 @@ const Cart = props => {
   const [cart, setCart] = useState([])
   
   useEffect(() => {
-    axios.get('/api/cart').then(user => {
-      setCart(user.data.cart)
+    axios.get('/api/cart').then(userCart => {
+      setCart(userCart.data)
     })
   }, [])
 
@@ -60,12 +60,12 @@ const Cart = props => {
             </div>
           </div>
         :
-        <div className='cart-empty' >
-          <h2>
-            Your cart is empty.<br></br>Go buy some stuff!
-          </h2>
-          <img src={sadCart} />
-        </div>
+          <div className='cart-empty' >
+            <h2>
+              Your cart is empty.<br></br>Go buy some stuff.
+            </h2>
+            <img src={sadCart} />
+          </div>
       }
     </div>
   )

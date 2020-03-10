@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import './Landing.scss'
 
 const Landing = props => {
   const [products, setProducts] = useState([])
-  
+
   useEffect(() => {
     axios.get('/api/products').then(products => {
       if(props.category !== '') {
@@ -28,18 +28,19 @@ const Landing = props => {
     return  <div className='landing-product'>
               <div>
                 <img src={img} />
-                <div className='product-info'> <i>{name}</i> </div>
+                <Link className='product-info' to={`/product/${product_id}`}> <i>{name}</i> </Link>
               </div>
 
               <div className='button-price'>
                 <div className='product-info'> $<b>{price}</b> </div>
-                <button onClick={() => addToCart(product_id)} > Add to Cart</button>
+                <button onClick={() => addToCart(product_id)}>Add to Cart</button>
               </div>
             </div>
   })
   
   return (
     <div className='landing' >
+      {props.category && <h1 className='landing-category'> {props.category} </h1> }
       {productList}
     </div>
   )

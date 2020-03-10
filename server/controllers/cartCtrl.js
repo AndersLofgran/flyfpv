@@ -1,7 +1,7 @@
 module.exports = {
   
   get: (req, res) => {
-    return res.status(200).send(req.session.user)
+    return res.status(200).send(req.session.user.cart)
   },
 
   add: async (req, res) => {
@@ -38,8 +38,8 @@ module.exports = {
     let {cart} = req.session.user
     
     if(+product_id === -1) {
-      cart = []
-      return res.status(200).send(cart)
+      req.session.user.cart = []
+      return res.status(200).send(req.session.user.cart)
     }
     
     for(let i = 0; i < cart.length; i++) {
@@ -47,6 +47,7 @@ module.exports = {
         cart.splice(i, 1)
       }
     }
+
     return res.status(200).send(cart)
   }
 

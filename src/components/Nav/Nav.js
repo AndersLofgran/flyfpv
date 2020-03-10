@@ -23,6 +23,12 @@ const Nav = props => {
     })
   }, [])
 
+  const logout = () => {
+    props.login_logout('', '')
+    props.filterCategory('')
+    axios.post('/auth/logout')
+  }
+
   const filterByCategory = category => {
     props.filterCategory(category)
     setToggleMenu(false)
@@ -63,16 +69,22 @@ const Nav = props => {
     {toggleMenu &&
       <div className='menu-dropdown'>
         <div>
-          {props.email !== ''
+          {props.email
             ?
               <div className='menu-dropdown-auth'>
                 <h3>Logged in: {props.email} </h3>
-                <Link to='/'> <h3 onClick={() => props.login_logout('', '')}>Logout</h3> </Link>
+                <Link to='/'> <h3 onClick={() => {
+                  props.login_logout('', '')
+                  logout()
+                  }}>Logout</h3> </Link>
               </div>
             :
               <div className='menu-dropdown-auth'>
                 <Link to='/'> <h3>Login</h3> </Link>
-                <Link to='/'> <h3 onClick={() => props.login_logout('', '')}>Logout</h3> </Link>
+                <Link to='/'> <h3 onClick={() => {
+                  props.login_logout('', '')
+                  logout()
+                  }}>Logout</h3> </Link>
               </div>
           }
         </div>
@@ -84,9 +96,9 @@ const Nav = props => {
           <h3 onClick={showCategories}> Categories </h3>
             {toggleCategories &&
                   <div className='categories' >
-                    <div className='category-item' onClick={ev => filterByCategory(ev.target.innerText)}>Antennas</div>
-                    <div className='category-item' onClick={ev => filterByCategory(ev.target.innerText)}>Batteries & Chargers</div>
-                    <div className='category-item' onClick={ev => filterByCategory(ev.target.innerText)}></div>
+                    <Link to='/landing' className='category-item' onClick={ev => filterByCategory(ev.target.innerText)}>Antennas</Link>
+                    <Link to='/landing' className='category-item' onClick={ev => filterByCategory(ev.target.innerText)}>Batteries & Chargers</Link>
+                    <Link to='/landing' className='category-item' onClick={ev => filterByCategory(ev.target.innerText)}></Link>
                   </div>
             }
         </div>

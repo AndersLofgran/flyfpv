@@ -1,1 +1,46 @@
-/* No CSS *//*# sourceMappingURL=Product.css.map */
+.product {
+  min-height: 75vh;
+}
+
+.product > h2 {
+  width: 75%;
+  margin: 10px auto 0 auto;
+}
+
+.product img {
+  width: 100%;
+}
+
+.product-purchase {
+  margin: 10px 0 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product-purchase > button {
+  border: solid 1px lightgrey;
+  border-radius: 3px;
+  background-color: transparent;
+  padding: 5px;
+  outline: none;
+}
+
+.product-purchase > button:active {
+  outline: none;
+  background-color: lightblue;
+}
+
+.product-price {
+  color: #34a5da;
+}
+
+.product-desc {
+  padding: 10px;
+}
+/*# sourceMappingURL=Product.css.map */

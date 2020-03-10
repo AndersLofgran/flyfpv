@@ -21,7 +21,6 @@ module.exports = {
     req.session.user = newUser
     req.session.user['cart'] = []
 
-    console.log(req.session.user)
     console.log(`--- ${email} registered ---`)
     return res.status(200).send(req.session.user)
   },

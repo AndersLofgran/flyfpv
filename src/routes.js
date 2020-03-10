@@ -10,7 +10,7 @@ export default (
   <Switch>
     <Route exact path='/' component={Auth} />
     <Route path='/landing' component={Landing} />
-    <Route path='/product' component={Product} />
+    <Route path='/product/:product_id' component={Product} />
     <Route path='/cart' component={Cart} />
     <Route path='/history' component={History} />
   </Switch>

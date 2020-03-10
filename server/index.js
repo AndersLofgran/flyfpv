@@ -39,7 +39,7 @@ app.get('/auth/user', authCtrl.currentUser)
 
 // PRODUCT ENDPOINTS
 app.get('/api/products', productCtrl.getAll)
-// app.get('/api/products', productCtrl.getById)
+app.get('/api/products/:product_id', productCtrl.getById)
 
 // CART ENDPOINTS
 app.get('/api/cart', cartCtrl.get)
@@ -48,3 +48,5 @@ app.put('/api/cart', cartCtrl.update)
 app.delete('/api/cart/:product_id', cartCtrl.delete)
 
 // HISTORY ENDPOINTS
+app.get('/api/history/:user_id', historyCtrl.get)
+app.post('/api/history', historyCtrl.add)
