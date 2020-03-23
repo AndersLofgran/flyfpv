@@ -8,9 +8,9 @@ const cartCtrl = require('./controllers/cartCtrl')
 const historyCtrl = require('./controllers/historyCtrl')
 const mailCtrl = require('./controllers/nodemailer')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
-// const path = require('path')
 
 const app = express()
+app.use( express.static( `${__dirname}/../build` ) )
 app.use(express.json())
 app.use(
   session({
@@ -56,7 +56,7 @@ app.post('/api/history', historyCtrl.add)
 app.post('/mail', mailCtrl.sendEmail)
 
 
-app.use( express.static( `${__dirname}/../build` ) )
+
 
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname + '../build/index.html'))
