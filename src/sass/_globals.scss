@@ -1,0 +1,19 @@
+$colors: (
+  main-bkg: #323639,
+  header-bkg: #232629,
+  box-border: #747474,
+  white-text: whitesmoke,
+  acc-green: #14A76C,
+  acc-orange: invert(46%) sepia(57%) saturate(1972%) hue-rotate(341deg) brightness(102%) contrast(101%)
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name)
+};
+
+@mixin displayFlex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}

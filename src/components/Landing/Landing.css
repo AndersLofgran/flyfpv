@@ -7,8 +7,11 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 10px 0 30px 0;
-  min-height: 700px;
+  padding: 10px 0 80px 0;
+  min-height: 75vh;
+  background-color: transparent;
+  color: whitesmoke;
+  font-size: 16px;
 }
 
 .landing-category {
@@ -27,11 +30,22 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 170px;
   margin: 5px;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  background-color: #232629;
+  border: 1px solid #747474;
+  color: whitesmoke;
+  padding: 4px;
+}
+
+.landing-product img {
+  border-radius: 5px;
+  height: 180px;
+  width: 100%;
 }
 
 .product-info {
@@ -40,14 +54,7 @@
   font-size: 12px;
 }
 
-.landing-product > div > img {
-  border-radius: 5px;
-  height: 180px;
-  width: 100%;
-}
-
 .button-price {
-  margin: 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -61,19 +68,43 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 10px 0;
+  color: #14A76C;
 }
 
-.button-price > button {
-  border: solid 1px lightgrey;
+.button-price button {
+  border: solid 1px #747474;
   border-radius: 3px;
   background-color: transparent;
   margin: 10px 0 0 0;
   padding: 5px;
   outline: none;
+  color: whitesmoke;
 }
 
-.button-price > button:active {
+.button-price button:active {
   outline: none;
-  background-color: lightblue;
+  background-color: grey;
+}
+
+@media (min-width: 770px) {
+  .landing {
+    margin: 0 10vw;
+    min-height: 90vh;
+    font-size: 36px;
+  }
+  .landing-product {
+    width: 220px;
+    margin: 10px;
+  }
+  .landing-product img {
+    height: 250px;
+  }
+  .landing-product i, .landing-product button {
+    font-size: 14px;
+  }
+  .landing-product b {
+    font-size: 18px;
+  }
 }
 /*# sourceMappingURL=Landing.css.map */

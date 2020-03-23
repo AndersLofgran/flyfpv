@@ -1,27 +1,4 @@
 .auth-header {
-  height: 80px;
-  width: 100%;
-  background-color: #024b93;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.auth-header-title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.auth-container {
-  height: 70vh;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,6 +12,28 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 80px;
+  background-color: #232629;
+  color: whitesmoke;
+}
+
+.auth-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #323639;
+  position: relative;
+  min-height: 95vh;
 }
 
 .auth {
@@ -51,27 +50,53 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 500px;
+  position: absolute;
+  top: 10vh;
+  height: 450px;
   width: 300px;
-  -webkit-box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+  background-color: #232629;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 1px solid #747474;
+}
+
+.auth button {
+  border: 1px solid #747474;
+  border-radius: 3px;
+  background-color: transparent;
+  width: 100px;
+  margin: 10px;
+  padding: 10px 0;
+  color: whitesmoke;
 }
 
 .auth * {
   margin: 5px;
 }
 
-.auth h2 {
-  margin: 0 0 50px 0;
+.auth-title {
+  position: absolute;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  margin: 0;
+  border-radius: 3px 3px 0 0;
+  background-color: #747474;
 }
 
-.auth button {
-  background-color: lightblue;
-  border: solid 1px lightgrey;
-  border-radius: 3px;
-  background-color: transparent;
-  width: 100px;
-  margin: 10px;
-  padding: 10px 0;
+.auth-title h2 {
+  margin: 30px 0 0 0;
+}
+
+.auth-inputs {
+  margin: 60px 0 20px 0;
+}
+
+.auth-inputs input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  height: 20px;
+  width: 200px;
 }
 /*# sourceMappingURL=Auth.css.map */

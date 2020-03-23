@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import './Product.scss'
 
 const Product = props => {
@@ -17,7 +18,7 @@ const Product = props => {
 
   const addToCart = productID => {
     axios.post('/api/cart', {product_id: productID}).then(product => {
-      // alert(`${product.data.name} added to cart`)
+      toast.success('Product added to cart')
     })
   }
   
@@ -25,13 +26,14 @@ const Product = props => {
   
   return (
     <div className='product'>
-      <h2>{name}</h2>
-      <img src={img} />
-      <div className='product-purchase'>
-        <h2 className='product-price'>${price}</h2>
-        <button onClick={() => addToCart(product_id)}>Add to Cart</button>
+      <div>
+        <h2>{name}</h2>
+        <img src={img} />
+        <div className='product-purchase'>
+          <h3 className='product-price'>${price}</h3>
+          <button onClick={() => addToCart(product_id)}>Add to Cart</button>
+        </div>
       </div>
-      <hr></hr>
       <div className='product-desc'>
         <h3>Description:</h3>
         {product_desc}

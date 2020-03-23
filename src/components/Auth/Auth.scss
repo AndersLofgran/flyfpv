@@ -1,37 +1,46 @@
+@import '../../sass/globals';
+
+
 .auth-header {
+  @include displayFlex(column);
   height: 80px;
-  background-color: #024b93;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: color(header-bkg);
+  color: color(white-text);
+}
+
+#auth-bkg-vid {
+  position: absolute;
+  height: 95vh;
+  width: 100vw;
 }
 
 .auth-container {
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include displayFlex(column);
+  background-color: color(main-bkg);
+  position: relative;
+  min-height: 95vh;
+  overflow: hidden;
 }
 
 .auth {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include displayFlex(column);
+  position: absolute;
+  top: 10vh;
   height: 450px;
   width: 300px;
+  background-color: color(header-bkg);
+  color: color(white-text);
   border-radius: 5px;
-  box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.2);
+  border: 1px solid color(box-border);
+  opacity: 90%;
   button {
-    background-color: lightblue;
-    border: solid 1px lightgrey;
+    border: 1px solid color(box-border);
     border-radius: 3px;
     background-color: transparent;
     width: 100px;
     margin: 10px;
     padding: 10px 0;
+    color: color(white-text);
   }
 }
   .auth * {
@@ -44,13 +53,20 @@
     height: 100px;
     width: 100%;
     margin: 0;
-    border-radius: 5px 5px 0 0;
-    background-color: rgba(2, 75, 147);
+    border-radius: 3px 3px 0 0;
+    background-color: color(box-border);
+    h2 {
+      margin: 30px 0 0 0;
+    }
   }
 
   .auth-inputs {
-    margin: 60px 0 0 0;
+    margin: 60px 0 20px 0;
     input {
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      height: 20px;
       width: 200px;
     }
   }

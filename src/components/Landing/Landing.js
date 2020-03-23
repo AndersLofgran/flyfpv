@@ -3,6 +3,7 @@ import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import './Landing.scss'
+import { toast } from 'react-toastify'
 
 const Landing = props => {
   const [products, setProducts] = useState([])
@@ -23,7 +24,7 @@ const Landing = props => {
 
   const addToCart = productID => {
     axios.post('/api/cart', {product_id: productID}).then(product => {
-      // alert(`${product.data.name} added to cart`)
+      toast.success('Product added to cart')
     })
   }
 
@@ -44,7 +45,7 @@ const Landing = props => {
   
   return (
     <div className='landing' >
-      <h1 className='landing-category'> {props.category} </h1>
+      <h1 className='landing-category'> - {props.category} - </h1>
       {productList}
     </div>
   )

@@ -1,36 +1,101 @@
-.nav {
+.flex-this {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-this > * {
+  padding: 0 1%;
+}
+
+.flex-this p {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px;
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #232629;
+  color: whitesmoke;
+}
+
+.fly-logo {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  position: absolute;
+  height: 30px;
+  -webkit-transform: rotate(330deg) translate(38px, 20px);
+          transform: rotate(330deg) translate(38px, 20px);
+}
+
+.nav-links {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  background-color: #d0d0d0;
-  height: 140px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+  position: relative;
+  z-index: 2;
+  background-color: #232629;
 }
 
 .nav img {
   height: 30px;
   margin: 15px;
+  -webkit-filter: invert(46%) sepia(57%) saturate(1972%) hue-rotate(341deg) brightness(102%) contrast(101%);
+          filter: invert(46%) sepia(57%) saturate(1972%) hue-rotate(341deg) brightness(102%) contrast(101%);
 }
 
 .nav a {
   height: 60px;
 }
 
-.menu-dropdown {
+.menu-dropdown-closed {
   position: absolute;
-  z-index: 1;
-  top: 140px;
+  -webkit-transform: translateY(-200px);
+          transform: translateY(-200px);
+  -webkit-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
   width: 100%;
-  padding: 10px;
-  background-color: lightblue;
-  text-align: center;
 }
 
-.menu-dropdown * {
+.menu-dropdown-open {
+  z-index: 1;
+  position: absolute;
+  -webkit-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
+  width: 100%;
+  padding: 10px;
+  background-color: #232629;
+  border-top: 2px solid #747474;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.menu-dropdown-open * {
   margin: 5px;
 }
 
@@ -44,12 +109,16 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
   padding-bottom: 10px;
-  border-bottom: 2px solid black;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .menu-dropdown-auth h3 {
-  width: 130px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .menu-dropdown-navigation {
@@ -60,33 +129,66 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.search-dropdown {
-  position: absolute;
-  z-index: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  top: 140px;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.search-dropdown-closed {
+  position: absolute;
+  -webkit-transform: translateY(-60px);
+          transform: translateY(-60px);
+  -webkit-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
+  width: 100%;
+}
+
+.search-dropdown-closed img {
+  height: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.search-dropdown-open {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
   width: 100%;
   padding: 10px;
-  background-color: #34a5da;
+  background-color: #232629;
+  border-top: 2px solid #747474;
+}
+
+.search-dropdown-open img {
+  height: 20px;
+  margin: 5px;
+  -webkit-filter: invert(46%) sepia(57%) saturate(1972%) hue-rotate(341deg) brightness(102%) contrast(101%);
+          filter: invert(46%) sepia(57%) saturate(1972%) hue-rotate(341deg) brightness(102%) contrast(101%);
 }
 
 .search-bar {
-  border: solid 1px lightgrey;
+  border: solid 1px #747474;
+  background-color: whitesmoke;
   border-radius: 30px;
-  height: 30px;
+  height: 60%;
   width: 70%;
   padding: 5px;
   text-align: center;
@@ -97,16 +199,19 @@
   outline-width: 0;
 }
 
-.search-dropdown img {
-  height: 20px;
-  margin: 5px;
+.categories-closed {
+  height: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 0;
+  overflow: hidden;
 }
 
-.search-dropdown * {
-  margin: 5px;
-}
-
-.categories {
+.categories-open {
+  height: auto;
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -115,8 +220,62 @@
 }
 
 .category-item {
-  background-color: rgba(0, 0, 50, 0.25);
+  border: 1px solid #747474;
   border-radius: 20px;
   padding: 5px 10px;
+}
+
+.not-mobile {
+  display: none;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+@media (min-width: 769px) {
+  .mobile {
+    display: none;
+  }
+  .not-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .header {
+    height: 60px;
+  }
+  .nav-links {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    background-color: #232629;
+    color: white;
+    padding: 0 5%;
+  }
+  .menu-dropdown-closed {
+    width: 50%;
+    right: 25%;
+  }
+  .menu-dropdown-open {
+    border-top: none;
+    width: 50%;
+    right: 25%;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+  }
+  .menu-dropdown-auth {
+    border-bottom: 2px solid #747474;
+  }
+  .nav img {
+    height: 25px;
+    margin: 5px;
+  }
+  .fly-logo {
+    position: relative;
+    -webkit-transform: rotate(330deg) translate(-15px, 5px);
+            transform: rotate(330deg) translate(-15px, 5px);
+  }
+  .search-bar {
+    width: 30vw;
+  }
 }
 /*# sourceMappingURL=Nav.css.map */

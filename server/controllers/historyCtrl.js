@@ -2,6 +2,7 @@ module.exports = {
 
   get: async (req, res) => {
     const {user_id} = req.params
+    const db = req.app.get('db')
 
     let history = await db.get_history([+user_id])
 

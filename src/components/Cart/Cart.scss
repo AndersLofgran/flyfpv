@@ -1,12 +1,24 @@
+@import '../../sass/globals';
+
+
 .cart {
-  min-height: 75vh;
+  @include displayFlex(column);
+  min-height: 90vh;
+  h1 {
+    color: color(white-text);
+    margin: 10px;
+  }
 }
 
 .cart-item {
   display: flex;
-  margin: 10px;
+  max-width: 600px;
+  margin: 15px 10px;
+  padding: 5px;
   border-radius: 5px;
-  box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.2);
+  background-color: color(header-bkg);
+  border: 1px solid color(box-border);
+  color: color(white-text);
 }
 .cart-item img {
   border-radius: 5px;
@@ -14,36 +26,38 @@
 }
 
 .cart-item-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include displayFlex(column, space-between, null);
   padding: 10px;
+  width: 100%;
 }
 
 .cart-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include displayFlex(column);
   margin: 40px 0;
+  color: color(white-text);
 }
   .cart-empty img {
     clip-path: inset(40px 0);
     height: 260px;
+    mix-blend-mode: multiply;
   }
 
 .price-quantity-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include displayFlex(null, space-between);
   margin: 0 5px;
-}  
+  color: color(acc-green);
+}
   .quantity-container {
     display: flex;
     align-items: center;
+    color: color(white-text);
   }
   .quantity-input {
     text-align: center;
-    border: 1px solid lightgrey;
+    border: solid 1px #747474;
+    border-radius: 3px;
+    background-color: transparent;
+    color: whitesmoke;
     margin: 0 0 0 5px;
     padding: 5px;
     height: 25px;
@@ -52,4 +66,40 @@
   .quantity-container img {
     height: 15px;
     margin: 0 0 0 5px;
+    filter: invert(46%) sepia(57%) saturate(1972%) hue-rotate(341deg) brightness(102%) contrast(101%);
   }
+
+.checkout {
+  color: whitesmoke;
+  button {
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #222629;
+    border: 1px solid #747474;
+    color: whitesmoke;
+  }
+}
+
+.bonus-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+  .bonus-item {
+    margin: 20px 0;
+    max-width: 240px;
+    color: whitesmoke;
+    svg {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+@media (min-width: 621px) {
+  .cart-item {
+    margin: 15px auto;
+  }
+}

@@ -6,11 +6,12 @@ const authCtrl = require('./controllers/authCtrl')
 const productCtrl = require('./controllers/productCtrl')
 const cartCtrl = require('./controllers/cartCtrl')
 const historyCtrl = require('./controllers/historyCtrl')
+const mailCtrl = require('./controllers/nodemailer')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
+// const path = require('path')
 
 const app = express()
 app.use(express.json())
-
 app.use(
   session({
     resave: false,
@@ -50,3 +51,13 @@ app.delete('/api/cart/:product_id', cartCtrl.delete)
 // HISTORY ENDPOINTS
 app.get('/api/history/:user_id', historyCtrl.get)
 app.post('/api/history', historyCtrl.add)
+
+// NODEMAILER
+app.post('/mail', mailCtrl.sendEmail)
+
+
+app.use( express.static( `${__dirname}/../build` ) )
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname + '../build/index.html'))
+// })

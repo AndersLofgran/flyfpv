@@ -8,6 +8,7 @@
 a {
   border: none;
   outline: none;
+  text-decoration: none;
   color: inherit;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
@@ -18,5 +19,6 @@ input:focus {
 
 .App {
   text-align: center;
+  background-color: #323639;
 }
 /*# sourceMappingURL=App.css.map */

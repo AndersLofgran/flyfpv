@@ -1,20 +1,39 @@
+@import '../../sass/globals';
+
 .history {
-  min-height: 75vh;
+  @include displayFlex;
+  min-height: 90vh;
+  h1 {
+    margin: 10px;
+    color: color(white-text);
+  }
 }
 
 .history-item {
-  display: flex;
-  margin: 10px;
+  margin: 15px;
+  padding: 10px;
   border-radius: 5px;
-  box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.2);
+  background-color: color(header-bkg);
+  border: 1px solid color(box-border);
+  color: color(white-text);
+  img {
+    border-radius: 5px;
+    height: 240px;
+  }
+  h3 {
+    width: 100%;
+  }
 }
-.history-item img {
-  border-radius: 5px;
-  height: 120px;
-}
+  .history-item-info {
+    text-align: start;
+    * {
+      padding: 10px 0;
+    }
+  }
 
 .history-empty {
   margin: 40px 0;
+  color: color(white-text);
 }
   .history-empty img {
     height: 260px;

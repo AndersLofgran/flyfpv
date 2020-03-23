@@ -19,11 +19,13 @@ const History = props => {
   const historyList = history.map((item, i) => {
     return  <Link to={`/product/${item.product_id}`}>
               <div className='history-item'>
-                <div>{i + 1}</div>
                 <img src={item.img} />
-                {item.name}
-                {item.category}
-                {item.price}
+                <div>{i + 1}</div>
+                <div className='history-item-info'>
+                <h3> {item.name} </h3>
+                  <div> <b>Price:</b> {item.price}</div>
+                  <div> <b>Category:</b> {item.category}</div>
+                </div>
               </div>
             </Link>
   }).reverse()
@@ -33,7 +35,10 @@ const History = props => {
     <div className='history'>
       {history[0]
         ?
-          <div> {historyList} </div>
+          <div>
+            <h1>Your History</h1>
+            {historyList}
+          </div>
         :
           <div className='history-empty' >
             <h2> You have no history.<br></br>Go peep some products. </h2>

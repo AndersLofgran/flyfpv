@@ -1,9 +1,15 @@
+@import '../../sass/globals';
+
+
 .landing {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 10px 0 30px 0;
-  min-height: 700px;
+  padding: 10px 0 80px 0;
+  min-height: 75vh;
+  background-color: transparent;
+  color: color(white-text);
+  font-size: 16px;
 }
 
 .landing-category {
@@ -12,13 +18,20 @@
 }
 
 .landing-product {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include displayFlex(column, space-between);
+  max-height: 500px;
   width: 170px;
   margin: 5px;
   border-radius: 5px;
-  box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.2);
+  background-color: color(header-bkg);
+  border: 1px solid color(box-border);
+  color: color(white-text);
+  padding: 4px;
+  img {
+    border-radius: 5px;
+    height: 180px;
+    width: 100%;
+  }
 }
   .product-info {
     text-align: center;
@@ -26,28 +39,43 @@
     font-size: 12px;
   }
   
-  .landing-product > div > img {
-    border-radius: 5px;
-    height: 180px;
-    width: 100%;
-  }
 
 .button-price {
+  @include displayFlex(column, space-between);
   margin: 10px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-  .button-price > button {
-    border: solid 1px lightgrey;
+  color: color(acc-green);
+  button {
+    border: solid 1px #747474;
     border-radius: 3px;
     background-color: transparent;
     margin: 10px 0 0 0;
     padding: 5px;
     outline: none;
+    color: color(white-text);
   }
-    .button-price > button:active {
+    button:active {
       outline: none;
-      background-color: lightblue;
+      background-color: grey;
     }
+}
+
+@media (min-width: 770px) {
+  .landing {
+    margin: 0 10vw;
+    min-height: 90vh;
+    font-size: 36px;
+  }
+  .landing-product {
+    width: 250px;
+    margin: 10px;
+    img {
+      height: 250px;
+    }
+    i, button {
+      font-size: 14px;
+    }
+    b {
+      font-size: 18px;
+    }
+  }
+}

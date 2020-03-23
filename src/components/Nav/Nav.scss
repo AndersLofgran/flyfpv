@@ -1,63 +1,119 @@
-.nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  background-color: rgb(208, 208, 208);
-  height: 140px;
-}
-  .nav img {
-    height: 30px;
-    margin: 15px;
-  }
-  .nav a {
-    height: 60px;
-  }
+@import '../../sass/globals';
 
-.menu-dropdown {
-  position: absolute;
-  z-index: 1;
-  top: 140px;
-  width: 100%;
-  padding: 10px;
-  background-color: lightblue;
-  text-align: center;
-}
-  .menu-dropdown * {
+
+.flex-this {
+  display: flex;
+  align-items: center;
+  > * {
+    padding: 0 1%;
+  }
+  p {
+    font-weight: bold;
+    font-size: 18px;
     margin: 5px;
   }
-
-.menu-dropdown-auth {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 2px solid black;
 }
-  .menu-dropdown-auth h3 {
-    width: 130px;
+
+.header {
+  position: relative;
+  z-index: 2;
+  height: 80px;
+  @include displayFlex;
+  background-color: color(header-bkg);
+  color: color(white-text);
+}
+  .fly-logo {
+    filter: invert(1);
+    position: absolute;
+    height: 30px;
+    transform: rotate(330deg) translate(38px, 20px);
   }
 
-.menu-dropdown-navigation {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.nav-links {
+  @include displayFlex(null, space-around);
+  height: 60px;
+  position: relative;
+  z-index: 2;
+  background-color: color(header-bkg);
 }
 
-.search-dropdown {
+.nav {
+  img {
+    height: 30px;
+    margin: 15px;
+    filter: color(acc-orange);
+  }
+  a {
+    height: 60px;
+  }
+}
+
+.menu-dropdown-closed {
   position: absolute;
+  transform: translateY(-250px);
+  transition: all 0.8s ease-in-out;
+  width: 100%;
+}
+
+.menu-dropdown-open {
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 140px;
+  position: absolute;
+  transition: all 0.8s ease-in-out;
   width: 100%;
   padding: 10px;
-  background-color: #34a5da;
+  background-color: color(header-bkg);
+  border-top: 2px solid color(box-border);
+  text-align: center;
+  color: color(white-text);
+  * {
+    margin: 5px;
+  }
+}
+
+.menu-dropdown-auth {
+  @include displayFlex(null, space-evenly);
+  text-align: center;
+  padding-bottom: 10px;
+  transition: all 0.5s ease-in-out;
+  h3 {
+    width: fit-content;
+  }
+}
+
+.menu-dropdown-navigation {
+  @include displayFlex(column);
+  transition: all 0.5s ease-in-out;
+}
+
+.search-dropdown-closed {
+  position: absolute;
+  transform: translateY(-60px);
+  transition: all 0.8s ease-in-out;
+  width: 100%;
+  img {
+    height: 0;
+    transition: 1s;
+  }
+}
+.search-dropdown-open {
+  position: absolute;
+  @include displayFlex;
+  transition: all 0.8s ease-in-out;
+  width: 100%;
+  padding: 10px;
+  background-color: color(header-bkg);
+  border-top: 2px solid color(box-border);
+  img {
+    height: 20px;
+    margin: 5px;
+    filter: color(acc-orange);
+  }
 }
   .search-bar {
-    border: solid 1px lightgrey;
+    border: solid 1px color(box-border);
+    background-color: color(white-text);
     border-radius: 30px;
-    height: 30px;
+    height: 60%;
     width: 70%;
     padding: 5px;
     text-align: center;
@@ -66,20 +122,71 @@
     .search-bar:focus {
       outline-width: 0;
     }
-  .search-dropdown img {
-    height: 20px;
-    margin: 5px;
-  }
-  .search-dropdown * {
-    margin: 5px;
-  }
 
-.categories {
+.categories-closed {
+  height: 0;
+  transition: 1s;
+  opacity: 0;
+  overflow: hidden;
+}
+    
+.categories-open {
+  height: auto;
+  transition: 1s;
+  opacity: 100%;
   display: flex;
   flex-wrap: wrap;
 }
   .category-item {
-    background-color: rgba(0, 0, 50, 0.25);
+    border: 1px solid color(box-border);
     border-radius: 20px;
     padding: 5px 10px;
   }
+
+.not-mobile {
+  display: none;
+  transition: 1s;
+}
+
+@media (min-width: 769px) {
+  .mobile {
+    display: none;
+  }
+  .not-mobile {
+    display: flex;
+  }
+  .header {
+    height: 60px;
+  }
+  .nav-links {
+    justify-content: space-between;
+    background-color: color(header-bkg);
+    color: white;
+    padding: 0 5%;
+  }
+  .menu-dropdown-closed {
+    width: 50%;
+    right: 25%;
+  }
+  .menu-dropdown-open {
+    border-top: none;
+    width: 50%;
+    right: 25%;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+  }
+    .menu-dropdown-auth {
+      border-bottom: 2px solid color(box-border);
+    }
+  .nav img {
+    height: 25px;
+    margin: 5px;
+  }
+  .fly-logo {
+    position: relative;
+    transform: rotate(330deg) translate(-15px, 5px);
+  }
+  .search-bar {
+    width: 30vw;
+  }
+}

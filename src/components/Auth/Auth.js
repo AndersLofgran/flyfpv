@@ -1,14 +1,29 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {login_logout} from '../../redux/userReducer'
 import axios from 'axios'
+import ReactPlayer from 'react-player'
 import './Auth.scss'
 
 const Auth = props => {
+  const youtubeURL = [
+    'https://www.youtube.com/watch?v=WNUX_iPsPsI&t?t=30',
+    'https://www.youtube.com/watch?v=kmDotWUzHIg?t=30',
+    'https://www.youtube.com/watch?v=5aqTL6V6JIM&t?t=30',
+    'https://www.youtube.com/watch?v=bUSq4WNc8PQ&t?t=30',
+    'https://www.youtube.com/watch?v=2aU6O-hbhmI&t?t=30',
+    'https://www.youtube.com/watch?v=qnFpcyBpl80&t?t=30',
+    'https://www.youtube.com/watch?v=odPdiP93e2w?t=30',
+  ]
+  const [rndNum, setRndNum] = useState(0)
   const [value, setValue] = useState({
     email: '',
     password: ''
   })
+
+  useEffect(() => {
+    setRndNum(Math.floor(Math.random() * youtubeURL.length))
+  }, [])
 
   const register = () => {
     axios.post('/auth/register', {email: value.email, password: value.password}).then(res => {
@@ -29,13 +44,22 @@ const Auth = props => {
   return (
     <>
       <div className='auth-header' >
-          <h1>flyFPV</h1>
-          <img />
+        <h1>flyFPV</h1>
+        <img />
       </div>
 
       <div className='auth-container' >
+        <ReactPlayer  url={youtubeURL[rndNum]}
+                      height='1080px'
+                      width='1920px'
+                      playing='true'
+                      loop='true'
+                      volume='1'
+                      muted='true'
+                      controls='false'
+        />
         <div className='auth' >
-          <div className='auth-title' >
+          <div className='auth-title'>
             <h2>Sign In</h2>
           </div>
           <div className='auth-inputs' >
