@@ -65,6 +65,7 @@
   color: whitesmoke;
   border-radius: 5px;
   border: 1px solid #747474;
+  opacity: 0.9;
 }
 
 .auth button {
