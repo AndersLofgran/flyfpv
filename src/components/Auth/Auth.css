@@ -17,6 +17,12 @@
   color: whitesmoke;
 }
 
+#auth-bkg-vid {
+  position: absolute;
+  height: 95vh;
+  width: 100vw;
+}
+
 .auth-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -34,6 +40,7 @@
   background-color: #323639;
   position: relative;
   min-height: 95vh;
+  overflow: hidden;
 }
 
 .auth {
